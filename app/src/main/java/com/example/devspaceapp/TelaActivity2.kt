@@ -7,26 +7,41 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.textfield.TextInputEditText
 
-class MainActivity : AppCompatActivity() {
+
+class TelaActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_tela2)
 
-        val btniniciar= findViewById<Button>(R.id.btn_iniciar)
+        val kilometres = findViewById<TextInputEditText>(R.id.edt_km)
 
-        btniniciar.setOnClickListener{
+        val btn_proximo = findViewById<Button>(R.id.btn_proximo)
 
-            val intent = Intent(this, TelaActivity2::class.java)
+        btn_proximo.setOnClickListener{
+
+            val km : Float =  kilometres.text.toString().toFloat()
+            println("miguel " + km
+            )
+
+            val intent = Intent(this, TelaActivity3::class.java)
+            intent.putExtra(KEY_UM , km)
             startActivity(intent)
+
+
         }
+
+
+
+
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
-
         }
     }
 }
