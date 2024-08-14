@@ -22,21 +22,13 @@ class TelaActivity2 : AppCompatActivity() {
 
         btn_proximo.setOnClickListener{
 
-            val km : Float =  kilometres.text.toString().toFloat()
-            println("miguel " + km
-            )
+                val km : Float = kilometres.text.toString().toFloat()
 
             val intent = Intent(this, TelaActivity3::class.java)
-            intent.putExtra(KEY_UM , km)
-            startActivity(intent)
+            intent.putExtra(KEY_UM,km)
 
 
         }
-
-
-
-
-
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
