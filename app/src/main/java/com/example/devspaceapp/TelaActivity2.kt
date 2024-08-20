@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 
 
@@ -22,10 +23,18 @@ class TelaActivity2 : AppCompatActivity() {
 
         btn_proximo.setOnClickListener{
 
+            val kmStr  : String =  kilometres.text.toString()
+
+            if (kmStr == ""){
+              Snackbar.make(kilometres,"preencha",Snackbar.LENGTH_LONG).show()
+
+            }else {
+
                 val km : Float = kilometres.text.toString().toFloat()
 
             val intent = Intent(this, TelaActivity3::class.java)
             intent.putExtra(KEY_UM,km)
+            startActivity(intent)}
 
 
         }
