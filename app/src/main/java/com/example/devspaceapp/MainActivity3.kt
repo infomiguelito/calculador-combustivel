@@ -3,6 +3,7 @@ package com.example.devspaceapp
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -25,22 +26,19 @@ class MainActivity3 : AppCompatActivity() {
 
         val edt_kml = findViewById<TextInputEditText>(R.id.edt_kml)
         val btn_proximo3 = findViewById<Button>(R.id.btn_proximo3)
-
+        val kmlStr = edt_kml.text
 
         btn_proximo3.setOnClickListener {
 
-            val kmlStr: String = edt_kml.text.toString()
 
-            if (kmlStr.isNotEmpty()) {
+            if (kmlStr.toString().isNotEmpty()) {
                 val kml: Float = edt_kml.text.toString().toFloat()
 
                 val intent = Intent(this, MainActivity4::class.java)
                 intent.putExtra(KEY_DOIS, kml)
+                intent.putExtra(KEY_UM, distancia.toString().toFloat())
                 startActivity(intent)
-
-
             } else {
-
                 Snackbar.make(edt_kml, "preencha", Snackbar.LENGTH_LONG).show()
             }
         }

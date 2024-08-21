@@ -20,20 +20,17 @@ class MainActivity2 : AppCompatActivity() {
 
         val btn_proximo = findViewById<Button>(R.id.btn_proximo)
 
+        val kmStr = kilometres.text
+
         btn_proximo.setOnClickListener {
-
-            val kmStr: String = kilometres.text.toString()
-
-            if (kmStr.isNotEmpty()) {
+            if (kmStr.toString().isNotEmpty()) {
                 val km: Float = kilometres.text.toString().toFloat()
                 val intent = Intent(this, MainActivity3::class.java)
                 intent.putExtra(KEY_UM, km)
                 startActivity(intent)
 
             } else {
-
                 Snackbar.make(kilometres, "preencha", Snackbar.LENGTH_LONG).show()
-
             }
         }
 

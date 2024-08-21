@@ -34,14 +34,15 @@ class MainActivity4 : AppCompatActivity() {
 
         btn_calcular.setOnClickListener {
 
-            if (preco.toString() == "") {
-                Snackbar.make(edt_preco,"preencha",Snackbar.LENGTH_LONG).show()
-            } else {
+            if (preco.toString().isNotEmpty()) {
                 val resultado = distance * (preco.toString().toFloat() / consume)
                 Intent(this, ResultActivity5::class.java).apply {
-                    putExtra("preco", resultado.toString().toFloat())
+                    putExtra(chave_result, resultado.toString().toFloat())
                     startActivity(this)
                 }
+            } else {
+                Snackbar.make(edt_preco, "preencha", Snackbar.LENGTH_LONG).show()
+
             }
 
         }
