@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TelaActivity2">
+    tools:context=".MainActivity2">
+
     <Button
         android:id="@+id/btn_proximo"
         android:layout_width="match_parent"
@@ -31,6 +32,7 @@
             android:inputType="numberDecimal"
             android:hint="fidirf" />
     </com.google.android.material.textfield.TextInputLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

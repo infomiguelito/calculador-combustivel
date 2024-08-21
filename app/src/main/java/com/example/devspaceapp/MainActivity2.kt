@@ -10,33 +10,31 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 
-
-class TelaActivity2 : AppCompatActivity() {
+class MainActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_tela2)
+        setContentView(R.layout.activity_main2)
 
         val kilometres = findViewById<TextInputEditText>(R.id.edt_km)
 
         val btn_proximo = findViewById<Button>(R.id.btn_proximo)
 
-        btn_proximo.setOnClickListener{
+        btn_proximo.setOnClickListener {
 
-            val kmStr  : String =  kilometres.text.toString()
+            val kmStr: String = kilometres.text.toString()
 
-            if (kmStr == ""){
-              Snackbar.make(kilometres,"preencha",Snackbar.LENGTH_LONG).show()
+            if (kmStr.isNotEmpty()) {
+                val km: Float = kilometres.text.toString().toFloat()
+                val intent = Intent(this, MainActivity3::class.java)
+                intent.putExtra(KEY_UM, km)
+                startActivity(intent)
 
-            }else {
+            } else {
 
-                val km : Float = kilometres.text.toString().toFloat()
+                Snackbar.make(kilometres, "preencha", Snackbar.LENGTH_LONG).show()
 
-            val intent = Intent(this, TelaActivity3::class.java)
-            intent.putExtra(KEY_UM,km)
-            startActivity(intent)}
-
-
+            }
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TelaActivity3">
+    tools:context=".MainActivity3">
 
     <Button
         android:id="@+id/btn_proximo3"
@@ -28,8 +28,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edt_kml"
             android:layout_width="match_parent"
+            android:inputType="numberDecimal"
             android:layout_height="wrap_content"
             android:hint="Consumo do carro (KM/L) :" />
     </com.google.android.material.textfield.TextInputLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

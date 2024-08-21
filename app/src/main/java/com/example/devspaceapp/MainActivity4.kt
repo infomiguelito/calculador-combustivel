@@ -1,9 +1,9 @@
 package com.example.devspaceapp
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -13,11 +13,13 @@ import com.google.android.material.textfield.TextInputEditText
 
 const val KEY_DOIS = "TelaActivity_4.consumo"
 
-class TelaActivity4 : AppCompatActivity() {
+
+class MainActivity4 : AppCompatActivity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_tela4)
+        setContentView(R.layout.activity_main4)
 
         val distance = intent.getFloatExtra(KEY_UM, 0f)
 
@@ -28,21 +30,20 @@ class TelaActivity4 : AppCompatActivity() {
         val edt_preco = findViewById<TextInputEditText>(R.id.edt_preco)
         val btn_calcular = findViewById<Button>(R.id.btn_proximo_4)
 
-        var precoStr: String = edt_preco.text.toString()
+        val preco = edt_preco.text
 
         btn_calcular.setOnClickListener {
-            if (precoStr.isNotEmpty()) {
-                Snackbar.make(edt_preco, "preencha", Snackbar.LENGTH_LONG).show()
 
+            if (preco.toString() == "") {
+                Snackbar.make(edt_preco,"preencha",Snackbar.LENGTH_LONG).show()
             } else {
-                val resultado = distance * (precoStr.toFloat() / consume)
-                println("resultado" + resultado)
-
-                val intent = Intent(this, ResultActivity::class.java)
-                intent.putExtra(chave_result, resultado)
-                startActivity(intent)
-
+                val resultado = distance * (preco.toString().toFloat() / consume)
+                Intent(this, ResultActivity5::class.java).apply {
+                    putExtra("preco", resultado.toString().toFloat())
+                    startActivity(this)
+                }
             }
+
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -51,5 +52,4 @@ class TelaActivity4 : AppCompatActivity() {
             insets
         }
     }
-
 }
